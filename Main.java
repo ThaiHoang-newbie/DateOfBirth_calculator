@@ -2,6 +2,7 @@ import java.util.Scanner;
 import validations.InputValidator;
 import controllers.DateOfBirthCalculator;
 import controllers.ZodiacCalculator;
+import controllers.FiveElementsCalculator;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,6 +26,11 @@ public class Main {
             ZodiacCalculator zodiacCalculator = new ZodiacCalculator();
             String zodiacSign = zodiacCalculator.calculateZodiacSign(dayOfBirth, monthOfBirth);
             System.out.println("Your zodiac sign is: " + zodiacSign);
+
+            // elements
+            FiveElementsCalculator elementsCalculator = new FiveElementsCalculator();
+            String result = elementsCalculator.calculateFiveElements(dayOfBirth, monthOfBirth, yearOfBirth);
+            System.out.println("Your element is: " + result);
         }
     }
 }
