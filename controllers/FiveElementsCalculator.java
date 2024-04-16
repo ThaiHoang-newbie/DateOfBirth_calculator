@@ -5,25 +5,35 @@ import interfaces.FiveElements;
 public class FiveElementsCalculator implements FiveElements {
     
     @Override
-    public String calculateFiveElements(int day, int month, int year) {
-        String[] elements = {"Wood", "Fire", "Earth", "Metal", "Water"};
-
-        int yearElement = (year - 4) % 10;
-        if (yearElement < 0) {
-            yearElement += 10;
+    public String calculateFiveElements(int year) {
+        int lastDigit = year % 10;
+        String element = "";
+        switch (lastDigit) {
+            case 4:
+            case 5:
+                element = "Mộc";
+                break;
+            case 6:
+            case 7:
+                element = "Hoả";
+                break;
+            case 8:
+            case 9:
+                element = "Thổ";
+                break;
+            case 0:
+            case 1:
+                element = "Kim";
+                break;
+            case 2:
+            case 3:
+                element = "Thủy";
+                break;
+            default:
+                element = "Không hợp lệ";
+                break;
         }
+        return element;
 
-        int monthElement = (month - 1) / 2;
-        if (month == 11 || month == 12) {
-            monthElement--;
-        }
-
-        int dayElement = (day - 1) % 10;
-        if (dayElement < 0) {
-            dayElement += 10;
-        }
-
-        int index = (yearElement + monthElement + dayElement) % 5;
-        return elements[index];
     }
 }
