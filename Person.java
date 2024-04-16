@@ -10,8 +10,9 @@ public class Person {
     private String name;
     private Date dateOfBirth;
     
-    public Person(String name, int dayOfBirth, int monthOfBirth, int yearOfBirth){
+    public Person(String name, Date dateOfBirth){
         this.name = name;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getName() {
