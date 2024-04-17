@@ -64,12 +64,4 @@ public class Person {
         ZodiacCalculator zodiacCalculator = new ZodiacCalculator();
         return zodiacCalculator.calculateZodiacSign(day, month);
     }
-
-    public String calculateZodiacSign() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calculateZodiacSign'");
-    }
-
-    // public String saveResult() {
-    // }
 }

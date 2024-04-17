@@ -17,7 +17,7 @@ public class Main {
         int month = date.getMonthValue();
         int year = date.getYear();
 
-        Person person = new Person(personName, Date);
+        Person person = new Person(personName, java.sql.Date.valueOf(date));
 
         if (!InputValidator.isValidDay(day, month, year) ) {
             System.out.println("Invalid date of birth, please check again");
