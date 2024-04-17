@@ -12,7 +12,6 @@ import java.util.Scanner;
 public class DateOfBirthCalculatorApplication {
 
 	public static void main(String[] args) {
-		// SpringApplication.run(DateOfBirthCalculatorApplication.class, args);
 		Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your name: ");
         String personName = scanner.nextLine();
@@ -31,6 +30,7 @@ public class DateOfBirthCalculatorApplication {
             System.out.println("Invalid date of birth, please check again");
         } else {
             person.saveUserInfo();
+            person.saveUserInfoToFile("data.json");
             System.out.println(person.getName() + " has " + person.calculateAge() + " age, " + person.calculateElement() + " element, "
                     + "and " + person.ZodiacCalculator() + " zodiac ");
         }
