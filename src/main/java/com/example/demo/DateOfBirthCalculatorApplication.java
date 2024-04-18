@@ -1,4 +1,8 @@
 package com.example.demo;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -41,7 +45,7 @@ public class DateOfBirthCalculatorApplication {
                     + "and " + person.ZodiacCalculator() + " zodiac ");
         }
 
-        // search usage
+        
         System.out.print("Enter your name that you wanna search: ");
         String nameSearch = scanner.nextLine();
 
@@ -49,9 +53,20 @@ public class DateOfBirthCalculatorApplication {
             JSONSearch jsonSearch = new JSONSearch(filePath);
             List<String> searchResults = jsonSearch.searchByName(nameSearch);
             if (searchResults.size() != 0) {
-                for (String result : searchResults) {
-                    System.out.println(result);
-                }
+                searchResults.forEach( jsonObj -> { 
+                    try {
+                        JSONObject obj = new JSONObject(jsonObj);
+                        System.out.println("Name: " + obj.getString("name"));
+                        System.out.println("Date of birth: " + obj.getString("date_of_birth"));
+                        System.out.println("Age: " + obj.getString("age_circle"));
+                        System.out.println("Zodiac: " + obj.getString("zodiac"));
+                        System.out.println("Element: " + obj.getString("element"));
+                        System.out.println("__________________");
+                        System.out.println();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } 
+                });
             } else {
                 System.out.println("Data not found");
             }
