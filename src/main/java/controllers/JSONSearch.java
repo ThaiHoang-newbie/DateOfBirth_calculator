@@ -33,6 +33,11 @@ public class JSONSearch implements Searchable {
     }
 
     @Override
+    public List<String> searchByDate(String date) {
+        return search("date_of_birth", date);
+    }
+
+    @Override
     public List<String> searchByZodiac(String zodiac) {
         return search("zodiac", zodiac);
     }

@@ -88,7 +88,6 @@ public class Person {
         infor.put("element", element);
         infor.put("zodiac", zodiac);
 
-        System.out.println(infor);
         return infor;
     };
 
@@ -111,8 +110,7 @@ public class Person {
         } catch (IOException e) {
             System.out.println("An error occurred while writing JSON data to file: " + filePath);
             e.printStackTrace();
-        }
-        ;
+        };
     }
 
     private JSONArray readExistingJsonArray(String filePath) throws IOException {
