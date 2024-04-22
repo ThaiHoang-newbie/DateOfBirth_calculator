@@ -59,8 +59,8 @@ public class DateOfBirthCalculatorApplication {
                 switch (optionSearch) {
                     case 1:
                         System.out.print("Enter name: ");
-                        String nameSearch = scanner.next();
-
+                        scanner.nextLine();
+                        String nameSearch = scanner.nextLine();
                         try {
                             JSONSearch jsonSearch = new JSONSearch(filePath);
                             List<String> searchResults = jsonSearch.searchByName(nameSearch);

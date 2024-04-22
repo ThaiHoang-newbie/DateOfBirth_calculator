@@ -3,14 +3,12 @@ package controllers;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Collectors;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import interfaces.Searchable;
 
 public class JSONSearch implements Searchable {
@@ -52,17 +50,39 @@ public class JSONSearch implements Searchable {
         return search("element", element);
     }
 
+    // private List<String> search(String key, String value) {
+    // List<String> results = new ArrayList<>();
+
+    // for (Object o : jsonArray) {
+    // JSONObject jsonObject = (JSONObject) o;
+
+    // if (jsonObject.containsKey(key) && jsonObject.get(key).equals(value)) {
+    // results.add(jsonObject.toString());
+    // }
+    // }
+    // return results;
+    // }
+
+    @SuppressWarnings("unchecked")
     private List<String> search(String key, String value) {
-        List<String> results = new ArrayList<>();
-
-        for (Object o : jsonArray) {
-            JSONObject jsonObject = (JSONObject) o;
-
-            if (jsonObject.containsKey(key) && jsonObject.get(key).equals(value)) {
-                results.add(jsonObject.toString());
-            }
-        }
+        List<String> results = (List<String>) jsonArray.stream().filter(item -> {
+            JSONObject jsonObject = (JSONObject) item;
+            return jsonObject.get(key).equals(value);
+        } )
+        .map(Object::toString)
+        .collect(Collectors.toList());
 
         return results;
     }
+
+    // for (Object o : jsonArray) {
+    // JSONObject jsonObject = (JSONObject) o;
+
+    // if (jsonObject.containsKey(key) && jsonObject.get(key).equals(value)) {
+    // results.add(jsonObject.toString());
+    // }
+    // }
+    // return results;
+    // }
+
 }
